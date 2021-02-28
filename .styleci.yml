@@ -1,5 +1,5 @@
 version: 8
-preset: recomended
+preset: recommended
 
 disabled:
   - single_class_element_per_statement
