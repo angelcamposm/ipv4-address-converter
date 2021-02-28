@@ -147,6 +147,63 @@ trait MutableIPv4AddressTrait
         return ip2long($address);
     }
 
+
+    /**
+     * Converts a hexadecimal IP address to binary IP Address.
+     *
+     * @param string $address
+     * @return string
+     */
+    private function fromHexadecimalToBinary(string $address): string
+    {
+        $octets = [];
+
+        foreach(str_split($address, 2) as $octet) {
+            $octets[] = str_pad(decbin(hexdec($octet)), 8, '0', STR_PAD_LEFT);
+        }
+
+        return implode('', $octets);
+    }
+
+    /**
+     * Converts a hexadecimal IP address to binary IP Address with dot notation.
+     *
+     * @param string $address
+     * @return string
+     */
+    private function fromHexadecimalToDottedBinary(string $address): string
+    {
+        return $this->applyDotNotationToAddress($this->fromHexadecimalToBinary($address), 8);
+    }
+
+    /**
+     * Converts a hexadecimal IP address to decimal IP Address.
+     *
+     * @param string $address
+     * @return string
+     */
+    private function fromHexadecimalToDecimal(string $address): string
+    {
+        $octets = [];
+
+        foreach(str_split($address, 2) as $octet) {
+            $octets[] = hexdec($octet);
+        }
+
+        return implode('.', $octets);
+    }
+
+    /**
+     * Converts a hexadecimal IP address to Long integer IP Address.
+     *
+     * @param string $address
+     * @return int
+     */
+    private function fromHexadecimalToLong(string $address): int
+    {
+        return ip2long($this->fromHexadecimalToDecimal($address));
+    }
+
     /**
      * Converts a dotted binary IP Address to doted decimal IP Address.
      *
