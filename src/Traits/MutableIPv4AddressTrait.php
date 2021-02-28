@@ -27,7 +27,7 @@ trait MutableIPv4AddressTrait
         $octets = [];
 
         if(str_contains($address, '.')) {
-            $address = str_replace($address, '.', '');
+            $address = str_replace('.', '', $address);
         }
 
         foreach (str_split($address, 8) as $octet) {
@@ -46,6 +46,10 @@ trait MutableIPv4AddressTrait
     private function fromBinaryToHex(string $address): string
     {
         $octets = '';
+
+        if(str_contains($address, '.')) {
+            $address = str_replace('.', '', $address);
+        }
 
         foreach(str_split($address, 8) as $octet) {
             $octets .= str_pad(dechex(bindec($octet)), 2, '0', STR_PAD_LEFT);
