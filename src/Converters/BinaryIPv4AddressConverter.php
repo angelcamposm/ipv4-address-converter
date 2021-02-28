@@ -23,14 +23,12 @@ class BinaryIPv4AddressConverter extends BaseAddressConverter
                 ? $this->fromDecimalToDottedBinary($this->address)
                 : $this->fromDecimalToBinary($this->address),
             IPAddressFormat::HEXADECIMAL => $this->withDotNotation
-                ? implode('.', str_split($this->address, 2))
-                : $this->address,
+                ? $this->fromHexadecimalToDottedBinary($this->address)
+                : $this->fromHexadecimalToBinary($this->address),
             IPAddressFormat::LONG => $this->withDotNotation
                 ? $this->fromLongToDottedBinary($this->address)
                 : $this->fromLongToBinary($this->address),
-            default => $this->withDotNotation
-                ? implode('.', str_split($this->address, 8))
-                : $this->address,
+            default => $this->address,
         };
     }
 }
