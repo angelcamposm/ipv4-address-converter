@@ -21,8 +21,7 @@ class LongIPv4AddressConverter extends BaseAddressConverter
         return match ($this->inputFormat) {
             IPAddressFormat::BINARY => $this->fromBinaryToLong($this->address),
             IPAddressFormat::DECIMAL => $this->fromDecimalToLong($this->address),
-            IPAddressFormat::HEXADECIMAL => 'TODO: to be implemented',
-            IPAddressFormat::LONG => (int) $this->address,
+            IPAddressFormat::HEXADECIMAL => $this->fromHexadecimalToLong($this->address),
             default => $this->address,
         };
     }
