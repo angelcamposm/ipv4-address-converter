@@ -149,18 +149,23 @@ class IPv4AddressConverter
         $converter = $this->converter;
 
         return match($this->inputFormat) {
+
             IPAddressFormat::BINARY => $this->withDotNotation
                 ? $converter->fromBinary($this->address)->withDotNotation()->convert()
                 : $converter->fromBinary($this->address)->convert(),
+
             IPAddressFormat::DECIMAL => $this->withDotNotation
                 ? $converter->fromDecimal($this->address)->withDotNotation()->convert()
                 : $converter->fromDecimal($this->address)->convert(),
+
             IPAddressFormat::HEXADECIMAL => $this->withDotNotation
                 ? $converter->fromHexadecimal($this->address)->withDotNotation()->convert()
                 : $converter->fromHexadecimal($this->address)->convert(),
+
             IPAddressFormat::LONG => $this->withDotNotation
                 ? $converter->fromLong($this->address)->withDotNotation()->convert()
                 : $converter->fromLong($this->address)->convert(),
+
             default => $this->address,
         };
     }
