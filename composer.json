@@ -1,0 +1,67 @@
+{
+    "name": "acamposm/ipv4-address-converter",
+    "description": "A PHP package to easily convert IP Addresses from any format to any format.",
+    "homepage": "https://github.com/angelcamposm/ipv4-address-converter",
+    "keywords": [
+        "php",
+        "laravel",
+        "package",
+        "network",
+        "ip",
+        "address",
+        "coverter",
+        "binary",
+        "decimal",
+        "hexadecimal",
+        "long",
+        "json"
+    ],
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Angel Campos Muñoz",
+            "email": "angel.campos.m@outlook.com",
+            "role": "developer"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/angelcamposm/ipv4-address-converter/issues",
+        "source": "https://github.com/angelcamposm/ipv4-address-converter"
+    },
+    "require": {
+        "php": "^8.0"
+    },
+    "require-dev": {
+
+    },
+    "autoload": {
+        "psr-4": {
+            "Acamposm\\IPv4AddressConverter\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Acamposm\\IPv4AddressConverter\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Acamposm\\IPv4AddressConverter\\ServiceProviders\\IPv4AddressConverterServiceProvider"
+            ],
+            "aliases": {
+                "IPv4AddressConverter": "Acamposm\\IPv4AddressConverter\\Facades\\IPv4AddressConverterFacade"
+            }
+        }
+    },
+    "prefer-stable": true,
+    "minimum-stability": "dev"
+}
