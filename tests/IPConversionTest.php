@@ -135,6 +135,20 @@ class IPConversionTest extends OrchestraTestCase
     /**
      * @test
      */
+    public function setDecimalAddressAndGetHexadecimalAddressWithDotNotation()
+    {
+        $converter = IPv4AddressConverter::convert()
+            ->fromDecimal(self::DECIMAL_IPADDRESS)
+            ->toHexadecimal()
+            ->withDotNotation()
+            ->get();
+
+        $this->assertEquals(self::DOTTED_HEXADECIMAL_IPADDRESS, $converter);
+    }
+
+    /**
+     * @test
+     */
     public function setDecimalAddressAndGetLongAddress()
     {
         $converter = IPv4AddressConverter::convert()
@@ -169,7 +183,7 @@ class IPConversionTest extends OrchestraTestCase
             ->withDotNotation()
             ->get();
 
-        $this->assertEquals(self::DOTTED_HEXADECIMAL_IPADDRESS, $converter);
+        $this->assertEquals(self::DOTTED_BINARY_IPADDRESS, $converter);
     }
 
     /**
@@ -219,9 +233,10 @@ class IPConversionTest extends OrchestraTestCase
         $converter = IPv4AddressConverter::convert()
             ->fromLong(self::LONG_IPADDRESS)
             ->toBinary()
+            ->withDotNotation()
             ->get();
 
-        $this->assertEquals(self::BINARY_IPADDRESS, $converter);
+        $this->assertEquals(self::DOTTED_BINARY_IPADDRESS, $converter);
     }
 
     /**
