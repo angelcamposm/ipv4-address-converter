@@ -25,9 +25,6 @@ class HexadecimalIPv4AddressConverter extends BaseAddressConverter
             IPAddressFormat::DECIMAL => $this->withDotNotation
                 ? $this->fromDecimalToDottedHex($this->address)
                 : $this->fromDecimalToHex($this->address),
-            IPAddressFormat::HEXADECIMAL => $this->withDotNotation
-                ? $this->applyDotNotationToAddress($this->address, 2)
-                : $this->address,
             IPAddressFormat::LONG => $this->withDotNotation ?
                 $this->fromLongToDottedHex($this->address) :
                 $this->fromLongToHex($this->address),
