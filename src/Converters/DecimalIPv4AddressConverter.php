@@ -20,8 +20,7 @@ class DecimalIPv4AddressConverter extends BaseAddressConverter
     {
         return match ($this->inputFormat) {
             IPAddressFormat::BINARY => $this->fromBinaryToDecimal($this->address),
-            IPAddressFormat::DECIMAL => $this->fromDecimalToLong($this->address),
-            IPAddressFormat::HEXADECIMAL => "//TODO: to be implemented",
+            IPAddressFormat::HEXADECIMAL => $this->fromHexadecimalToDecimal($this->address),
             IPAddressFormat::LONG => $this->fromLongToDecimal($this->address),
             default => $this->address,
         };
