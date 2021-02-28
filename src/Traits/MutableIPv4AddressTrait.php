@@ -26,6 +26,10 @@ trait MutableIPv4AddressTrait
     {
         $octets = [];
 
+        if(str_contains($address, '.')) {
+            $address = str_replace($address, '.', '');
+        }
+
         foreach (str_split($address, 8) as $octet) {
             $octets[] = bindec($octet);
         }
