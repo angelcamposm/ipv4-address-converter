@@ -4,7 +4,7 @@ namespace Acamposm\IPv4AddressConverter\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
-class SubnetCalculatorFacade extends Facade
+class IPv4AddressConverterFacade extends Facade
 {
     /**
      * Get the registered name of the component.
