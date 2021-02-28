@@ -1,11 +1,11 @@
 <?php
 
-namespace Acamposm\IPv4AddressConverter\Providers;
+namespace Acamposm\IPv4AddressConverter\ServiceProviders;
 
-use Acamposm\SubnetCalculator\IPv4AddressConverter;
+use Acamposm\IPv4AddressConverter\IPv4AddressConverter;
 use Illuminate\Support\ServiceProvider;
 
-class SubnetCalculatorServiceProvider extends ServiceProvider
+class IPv4AddressConverterServiceProvider extends ServiceProvider
 {
     /**
      * Bootstrap the application services.
