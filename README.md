@@ -51,7 +51,7 @@ Please see [CHANGELOG.md](https://github.com/angelcamposm/ipv4-address-converter
 
 ## Contributing
 
-Thank you for considering contributing to the improvement of the package. Please see CONTRIBUTING for details.
+Thank you for considering contributing to the improvement of the package. Please see [CONTRIBUTING.md](https://github.com/angelcamposm/ipv4-address-converter/CONTRIBUTING.md) for details.
 
 ## Security Vulnerabilities
 
