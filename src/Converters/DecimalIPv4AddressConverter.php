@@ -2,10 +2,8 @@
 
 namespace Acamposm\IPv4AddressConverter\Converters;
 
-use Acamposm\IPv4AddressConverter\{
-    Enums\IPAddressFormatEnum as IPAddressFormat,
-    Traits\MutableIPv4AddressTrait as MutableIPv4Address,
-};
+use Acamposm\IPv4AddressConverter\Enums\IPAddressFormatEnum as IPAddressFormat;
+use Acamposm\IPv4AddressConverter\Traits\MutableIPv4AddressTrait as MutableIPv4Address;
 
 class DecimalIPv4AddressConverter extends BaseAddressConverter
 {
