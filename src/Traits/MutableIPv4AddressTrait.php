@@ -17,6 +17,22 @@ trait MutableIPv4AddressTrait
     }
 
     /**
+     * Remove dot notation from binary string IP Address.
+     *
+     * @param string $address
+     *
+     * @return string
+     */
+    private function removeDotNotationToAddress(string $address): string
+    {
+        if (str_contains($address, '.')) {
+            return str_replace('.', '', $address);
+        }
+
+        return $address;
+    }
+
+    /**
      * Converts a binary IP Address to dotted decimal IP Address.
      *
      * @param string $address
@@ -24,11 +40,8 @@ trait MutableIPv4AddressTrait
      */
     private function fromBinaryToDecimal(string $address): string
     {
+        $address = $this->removeDotNotationToAddress($address);
         $octets = [];
-
-        if (str_contains($address, '.')) {
-            $address = str_replace('.', '', $address);
-        }
 
         foreach (str_split($address, 8) as $octet) {
             $octets[] = bindec($octet);
@@ -45,11 +58,8 @@ trait MutableIPv4AddressTrait
      */
     private function fromBinaryToHex(string $address): string
     {
+        $address = $this->removeDotNotationToAddress($address);
         $octets = '';
-
-        if (str_contains($address, '.')) {
-            $address = str_replace('.', '', $address);
-        }
 
         foreach (str_split($address, 8) as $octet) {
             $octets .= str_pad(dechex(bindec($octet)), 2, '0', STR_PAD_LEFT);
