@@ -1,16 +1,13 @@
 <?php
 
-
 namespace Acamposm\IPv4AddressConverter;
 
-use Acamposm\IPv4AddressConverter\{
-    Converters\BinaryIPv4AddressConverter,
-    Converters\DecimalIPv4AddressConverter,
-    Converters\HexadecimalIPv4AddressConverter,
-    Converters\LongIPv4AddressConverter,
-    Enums\IPAddressFormatEnum as IPAddressFormat,
-    Interfaces\IPv4AddressConverterInterface,
-};
+use Acamposm\IPv4AddressConverter\Converters\BinaryIPv4AddressConverter;
+use Acamposm\IPv4AddressConverter\Converters\DecimalIPv4AddressConverter;
+use Acamposm\IPv4AddressConverter\Converters\HexadecimalIPv4AddressConverter;
+use Acamposm\IPv4AddressConverter\Converters\LongIPv4AddressConverter;
+use Acamposm\IPv4AddressConverter\Enums\IPAddressFormatEnum as IPAddressFormat;
+use Acamposm\IPv4AddressConverter\Interfaces\IPv4AddressConverterInterface;
 
 class IPv4AddressConverter
 {
