@@ -6,7 +6,6 @@ use Acamposm\IPv4AddressConverter\IPv4AddressConverter;
 
 final class GetAddressesFromDecimalStringTest extends BaseTestCase
 {
-
     /**
      * @test
      */
@@ -73,5 +72,4 @@ final class GetAddressesFromDecimalStringTest extends BaseTestCase
 
         $this->assertEquals(self::LONG_IPADDRESS, $converter);
     }
-
 }
