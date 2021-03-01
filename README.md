@@ -5,7 +5,7 @@
 [![Latest Unstable Version](https://poser.pugx.org/acamposm/ipv4-address-converter/v/unstable)](https://packagist.org/packages/acamposm/ipv4-address-converter)
 [![Build Status](https://travis-ci.com/angelcamposm/ipv4-address-converter.svg?branch=master)](https://travis-ci.com/angelcamposm/ipv4-address-converter)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/angelcamposm/ipv4-address-converter/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/angelcamposm/ipv4-address-converter/?branch=master)
-[![StyleCI](https://github.styleci.io/repos/343186632/shield?style=flat&branch=master)](https://github.styleci.io/repos/255138468)
+[![StyleCI](https://github.styleci.io/repos/343186632/shield?style=flat&branch=master)](https://github.styleci.io/repos/343186632)
 [![Total Downloads](https://poser.pugx.org/acamposm/ipv4-address-converter/downloads)](https://packagist.org/packages/acamposm/ipv4-address-converter)
 
 This PHP package allows you to perform IPv4 Address conversion within Laravel applications.
