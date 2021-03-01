@@ -33,7 +33,10 @@ class IPv4AddressConverter
     }
 
     /**
+     * Set the value of $address from a binary string IP Address.
+     *
      * @param string $address
+     *
      * @return $this
      */
     public function fromBinary(string $address): IPv4AddressConverter
@@ -45,7 +48,10 @@ class IPv4AddressConverter
     }
 
     /**
+     * Set the value of $address from a dotted decimal string IP Address.
+     *
      * @param string $address
+     *
      * @return $this
      */
     public function fromDecimal(string $address): IPv4AddressConverter
@@ -57,7 +63,10 @@ class IPv4AddressConverter
     }
 
     /**
+     * Set the value of $address from a hexadecimal string IP Address.
+     *
      * @param string $address
+     *
      * @return $this
      */
     public function fromHexadecimal(string $address): IPv4AddressConverter
@@ -69,7 +78,10 @@ class IPv4AddressConverter
     }
 
     /**
+     * Set the value of $address from a long integer IP Address.
+     *
      * @param int $address
+     *
      * @return $this
      */
     public function fromLong(int $address): IPv4AddressConverter
@@ -141,6 +153,7 @@ class IPv4AddressConverter
     }
 
     /**
+     * Returns the converted IP Address from the original value to specified format.
      *
      * @return int|string
      */
