@@ -10,6 +10,22 @@
 
 This PHP package allows you to perform IPv4 Address conversion within Laravel applications.
 
+- [Features](#features)
+  - [Conversions](#conversions)
+- [Installation](#installation)
+- [Usage](#usage)
+    - [Input methods](#input-methods)
+    - [Output methods](#output-methods)
+    - [Modifiers](#modifiers)
+- [Sample outputs](#sample-outputs)
+- [Testing](#testing)
+- [Changelog](#changelog)
+- [Contributing](#contributing)
+- [Security Vulnerabilities](#security-vulnerabilities)
+- [Standards](#standards)
+- [Credits](#credits)
+- [License](#license)
+
 ## Features
 
 The package accepts an IP address as an input and converts it to a specified IP address format.  
@@ -52,6 +68,189 @@ composer require acamposm/ipv4-address-converter
 ```
 
 ***Note:*** We try to follow [SemVer v2.0.0](https://semver.org/).
+
+## Usage
+
+### Input Methods
+
+These are the valid input methods for the conversion of the IP Addresses.
+
+#### fromBinary
+
+Set the input for the IP Address conversion as a binary string.
+
+| accepts | `string` $address     |
+| ---     | ---                   |
+| returns | IPv4AddressConverter  |
+
+#### fromDecimal
+
+Set the input for the IP Address conversion as a doted decimal string.
+
+| accepts | `string` $address     |
+| ---     | ---                   |
+| returns | IPv4AddressConverter  |
+
+#### fromHexadecimal
+
+Set the input for the IP Address conversion as a hexadecimal string.
+
+| accepts | `string` $address     |
+| ---     | ---                   |
+| returns | IPv4AddressConverter  |
+
+#### fromLong
+
+Set the input for the IP Address conversion as a long integer.
+
+| accepts | `string` $address     |
+| ---     | ---                   |
+| returns | IPv4AddressConverter  |
+
+### Output Methods
+
+These methods are valid output methods for the conversion of the IP address specified in the previous input methods.
+
+#### toBinary
+
+Set binary string as desired output format.
+
+#### toDecimal
+
+Set dotted decimal as desired output format.
+
+#### toHexadecimal
+
+Set hexadecimal string as desired output format.
+
+#### toLong
+
+Set long integer as desired output format.
+
+### Modifiers
+
+With these modifiers we can control the output of the conversion operation.
+
+#### withDotNotation
+
+This modifier will apply dot notation to the output of the conversion, only available to binary strings and hexadecimal strings.
+
+## Sample outputs
+
+### From Decimal to Long Integer
+
+This example shows how to convert a dotted-decimal IP address to a long integer IP address.
+
+```php
+use Acamposm\IPv4AddressConverter\IPv4AddressConverter;
+
+$converter = IPv4AddressConverter::convert()
+  ->fromDecimal('192.168.10.254')
+  ->toLong()
+  ->get();
+
+var_dump($converter);
+```
+
+The output of the conversion is a integer.
+
+```
+int(3232238334)
+```
+
+### From Decimal to Binary String
+
+This example shows how to convert a dotted decimal IP address to binary string IP address.
+
+```php
+use Acamposm\IPv4AddressConverter\IPv4AddressConverter;
+
+$converter = IPv4AddressConverter::convert()
+  ->fromDecimal('192.168.10.254')
+  ->toBinary()
+  ->get();
+
+var_dump($converter);
+```
+
+The output is a binary string IP Address.
+
+```
+string(32) "11000000101010000000101011111110"
+```
+
+### From Decimal to Binary String with Dot Notation
+
+This example shows how to convert a dotted-decimal IP address to binary string IP address with dot notation.
+
+```php
+use Acamposm\IPv4AddressConverter\IPv4AddressConverter;
+
+$converter = IPv4AddressConverter::convert()
+  ->fromDecimal('192.168.10.254')
+  ->toBinary()
+  ->withDotNotation()
+  ->get();
+
+var_dump($converter);
+```
+
+The output is a binary string IP Address with dot notation.
+
+```
+string(35) "11000000.10101000.00001010.11111110"
+```
+
+### From Decimal to Hexadecimal
+
+This example shows how to convert a dotted-decimal IP address to a hexadecimal string IP address.
+
+```php
+use Acamposm\IPv4AddressConverter\IPv4AddressConverter;
+
+$converter = IPv4AddressConverter::convert()
+  ->fromDecimal('192.168.10.254')
+  ->toHexadecimal()
+  ->get();
+
+var_dump($converter);
+```
+
+The output of the conversion is a hexadecimal string IP address.
+
+```
+string(8) "C0A80AFE"
+```
+
+### From Decimal to Hexadecimal with Dot Notation
+
+This example shows how to convert a dotted-decimal IP address to a hexadecimal string IP address with dot notation.
+
+```php
+use Acamposm\IPv4AddressConverter\IPv4AddressConverter;
+
+$converter = IPv4AddressConverter::convert()
+  ->fromDecimal('192.168.10.254')
+  ->toHexadecimal()
+  ->withDotNotation()
+  ->get();
+
+var_dump($converter);
+```
+
+The output of the conversion is a hexadecimal string IP address with dot notation.
+
+```
+string(11) "C0.A8.0A.FE"
+```
+
+## Testing
+
+To run the tests you only need to run this command:
+
+```bash
+composer test
+```
 
 ## Changelog
 
