@@ -270,7 +270,7 @@ The php package IPv4 Address Converter, comply with the next standards:
 
 - [PSR-1 - Basic Coding Standard](http://www.php-fig.org/psr/psr-1/)
 - [PSR-4 - Autoloading Standard](http://www.php-fig.org/psr/psr-4/)
-- [PSR-12 - Extended Coding Style Guide](hhttps://www.php-fig.org/psr/psr-12/)
+- [PSR-12 - Extended Coding Style Guide](https://www.php-fig.org/psr/psr-12/)
 
 ## Credits
 
