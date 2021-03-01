@@ -97,6 +97,5 @@ abstract class BaseAddressConverter implements IPv4AddressConverterInterface
      */
     public function convert(): int|string
     {
-
     }
 }
