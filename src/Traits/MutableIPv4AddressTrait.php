@@ -237,7 +237,7 @@ trait MutableIPv4AddressTrait
      * @param string $address
      * @return string
      */
-    private function fromLongToDecimal(string $address): string
+    private function fromLongToDecimal(int $address): string
     {
         return long2ip($address);
     }
@@ -248,7 +248,7 @@ trait MutableIPv4AddressTrait
      * @param string $address
      * @return string
      */
-    private function fromLongToDottedHex(string $address): string
+    private function fromLongToDottedHex(int $address): string
     {
         return $this->fromDecimalToDottedHex(long2ip($address));
     }
@@ -270,7 +270,7 @@ trait MutableIPv4AddressTrait
      * @param string $address
      * @return string
      */
-    private function fromLongToBinary(string $address): string
+    private function fromLongToBinary(int $address): string
     {
         return $this->fromDecimalToBinary($this->fromLongToDecimal($address));
     }
