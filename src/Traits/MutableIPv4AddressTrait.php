@@ -26,7 +26,7 @@ trait MutableIPv4AddressTrait
     {
         $octets = [];
 
-        if(str_contains($address, '.')) {
+        if (str_contains($address, '.')) {
             $address = str_replace('.', '', $address);
         }
 
@@ -47,11 +47,11 @@ trait MutableIPv4AddressTrait
     {
         $octets = '';
 
-        if(str_contains($address, '.')) {
+        if (str_contains($address, '.')) {
             $address = str_replace('.', '', $address);
         }
 
-        foreach(str_split($address, 8) as $octet) {
+        foreach (str_split($address, 8) as $octet) {
             $octets .= str_pad(dechex(bindec($octet)), 2, '0', STR_PAD_LEFT);
         }
 
@@ -129,7 +129,7 @@ trait MutableIPv4AddressTrait
     {
         $octets = '';
 
-        foreach(explode('.', $address) as $octet) {
+        foreach (explode('.', $address) as $octet) {
             $octets .= str_pad(dechex($octet), 2, '0', STR_PAD_LEFT);
         }
 
@@ -158,7 +158,7 @@ trait MutableIPv4AddressTrait
     {
         $octets = [];
 
-        foreach(str_split($address, 2) as $octet) {
+        foreach (str_split($address, 2) as $octet) {
             $octets[] = str_pad(decbin(hexdec($octet)), 8, '0', STR_PAD_LEFT);
         }
 
@@ -186,7 +186,7 @@ trait MutableIPv4AddressTrait
     {
         $octets = [];
 
-        foreach(str_split($address, 2) as $octet) {
+        foreach (str_split($address, 2) as $octet) {
             $octets[] = hexdec($octet);
         }
 
