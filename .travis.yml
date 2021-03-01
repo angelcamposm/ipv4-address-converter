@@ -6,10 +6,9 @@ php:
 env:
   matrix:
     - COMPOSER_FLAGS="--prefer-lowest"
-    - COMPOSER_FLAGS=""
 
 script:
   - phpunit --coverage-text --coverage-clover=coverage.clover
 
 after_script:
-  - php vendor/bin/ocular code-coverage:upload --format=php-clover coverage.clover
+  - php /home/travis/build/angelcamposm/ipv4-address-converter/vendor/bin/ocular code-coverage:upload --format=php-clover coverage.clover
