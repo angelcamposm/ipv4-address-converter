@@ -2,10 +2,8 @@
 
 namespace Acamposm\IPv4AddressConverter\Converters;
 
-use Acamposm\IPv4AddressConverter\{
-    Enums\IPAddressFormatEnum as IPAddressFormat,
-    Interfaces\IPv4AddressConverterInterface,
-};
+use Acamposm\IPv4AddressConverter\Enums\IPAddressFormatEnum as IPAddressFormat;
+use Acamposm\IPv4AddressConverter\Interfaces\IPv4AddressConverterInterface;
 
 abstract class BaseAddressConverter implements IPv4AddressConverterInterface
 {
@@ -19,12 +17,14 @@ abstract class BaseAddressConverter implements IPv4AddressConverterInterface
      */
     public function __construct(
         protected $withDotNotation = false,
-    ) {}
+    ) {
+    }
 
     /**
      * Set the value of $address from Binary string.
      *
      * @param string $address
+     *
      * @return BaseAddressConverter
      */
     public function fromBinary(string $address): BaseAddressConverter
@@ -39,6 +39,7 @@ abstract class BaseAddressConverter implements IPv4AddressConverterInterface
      * Set the value of $address from Decimal string.
      *
      * @param string $address
+     *
      * @return BaseAddressConverter
      */
     public function fromDecimal(string $address): BaseAddressConverter
@@ -53,6 +54,7 @@ abstract class BaseAddressConverter implements IPv4AddressConverterInterface
      * Set the value of $address from Hexadecimal string.
      *
      * @param string $address
+     *
      * @return BaseAddressConverter
      */
     public function fromHexadecimal(string $address): BaseAddressConverter
@@ -67,6 +69,7 @@ abstract class BaseAddressConverter implements IPv4AddressConverterInterface
      * Set the value of $address from Long Integer.
      *
      * @param int $address
+     *
      * @return BaseAddressConverter
      */
     public function fromLong(int $address): BaseAddressConverter
@@ -94,7 +97,6 @@ abstract class BaseAddressConverter implements IPv4AddressConverterInterface
      */
     public function convert(): int|string
     {
-        // TODO: Implement convert() method.
-        return '';
+
     }
 }
