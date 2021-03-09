@@ -8,7 +8,6 @@ env:
     - COMPOSER_FLAGS="--prefer-lowest"
 
 script:
-  - composer install
   - composer update
   - phpunit --coverage-text --coverage-clover=coverage.clover
 
