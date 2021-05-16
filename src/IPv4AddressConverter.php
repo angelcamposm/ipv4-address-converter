@@ -7,21 +7,23 @@ use Acamposm\IPv4AddressConverter\Converters\DecimalIPv4AddressConverter;
 use Acamposm\IPv4AddressConverter\Converters\HexadecimalIPv4AddressConverter;
 use Acamposm\IPv4AddressConverter\Converters\LongIPv4AddressConverter;
 use Acamposm\IPv4AddressConverter\Enums\IPAddressFormatEnum as IPAddressFormat;
+use Acamposm\IPv4AddressConverter\Exceptions\OutputFormatException;
 use Acamposm\IPv4AddressConverter\Interfaces\IPv4AddressConverterInterface;
+use stdClass;
 
 class IPv4AddressConverter
 {
     private int|string $address;
     private IPv4AddressConverterInterface $converter;
     private int $inputFormat;
-    private bool $withDotNotation = false;
+    private bool $withDotNotation;
 
     /**
      * IPv4AddressConverter constructor.
      */
     public function __construct()
     {
-        //
+        $this->withDotNotation = false;
     }
 
     public static function convert()
@@ -96,7 +98,7 @@ class IPv4AddressConverter
      */
     public function toBinary(): IPv4AddressConverter
     {
-        $this->converter = new BinaryIPv4AddressConverter();
+        $this->converter = $this->getBinaryConverter();
 
         return $this;
     }
@@ -108,7 +110,7 @@ class IPv4AddressConverter
      */
     public function toDecimal(): IPv4AddressConverter
     {
-        $this->converter = new DecimalIPv4AddressConverter();
+        $this->converter = $this->getDecimalConverter();
 
         return $this;
     }
@@ -120,7 +122,7 @@ class IPv4AddressConverter
      */
     public function toHexadecimal(): IPv4AddressConverter
     {
-        $this->converter = new HexadecimalIPv4AddressConverter();
+        $this->converter = $this->getHexadecimalConverter();
 
         return $this;
     }
@@ -132,7 +134,7 @@ class IPv4AddressConverter
      */
     public function toLong(): IPv4AddressConverter
     {
-        $this->converter = new LongIPv4AddressConverter();
+        $this->converter = $this->getLongConverter();
 
         return $this;
     }
@@ -153,30 +155,225 @@ class IPv4AddressConverter
      * Returns the converted IP Address from the original value to specified format.
      *
      * @return int|string
+     * @throws OutputFormatException
      */
     public function get(): int|string
     {
-        $converter = $this->converter;
+        if (!isset($this->converter)) {
+            throw new OutputFormatException();
+        }
 
         return match($this->inputFormat) {
 
-            IPAddressFormat::BINARY => $this->withDotNotation
-                ? $converter->fromBinary($this->address)->withDotNotation()->convert()
-                : $converter->fromBinary($this->address)->convert(),
+            IPAddressFormat::BINARY => $this->getFromBinary(),
 
-            IPAddressFormat::DECIMAL => $this->withDotNotation
-                ? $converter->fromDecimal($this->address)->withDotNotation()->convert()
-                : $converter->fromDecimal($this->address)->convert(),
+            IPAddressFormat::DECIMAL => $this->getFromDecimal(),
 
-            IPAddressFormat::HEXADECIMAL => $this->withDotNotation
-                ? $converter->fromHexadecimal($this->address)->withDotNotation()->convert()
-                : $converter->fromHexadecimal($this->address)->convert(),
+            IPAddressFormat::HEXADECIMAL => $this->getFromHexadecimal(),
 
-            IPAddressFormat::LONG => $this->withDotNotation
-                ? $converter->fromLong($this->address)->withDotNotation()->convert()
-                : $converter->fromLong($this->address)->convert(),
+            IPAddressFormat::LONG => $this->getFromLong(),
 
             default => $this->address,
         };
+    }
+
+    /**
+     * @return mixed
+     */
+    private function getFromBinary()
+    {
+        $converter = $this->converter->fromBinary($this->address);
+
+        return $this->withDotNotation
+            ? $converter->withDotNotation()->convert()
+            : $converter->convert();
+    }
+
+    /**
+     * @return mixed
+     */
+    private function getFromDecimal()
+    {
+        $converter = $this->converter->fromDecimal($this->address);
+
+        return $this->withDotNotation
+            ? $converter->withDotNotation()->convert()
+            : $converter->convert();
+    }
+
+    /**
+     * @return mixed
+     */
+    private function getFromHexadecimal()
+    {
+        $converter = $this->converter->fromHexadecimal($this->address);
+
+        return $this->withDotNotation
+            ? $converter->withDotNotation()->convert()
+            : $converter->convert();
+    }
+
+    /**
+     * @return mixed
+     */
+    private function getFromLong()
+    {
+        $converter = $this->converter->fromLong($this->address);
+
+        return $this->withDotNotation
+            ? $converter->withDotNotation()->convert()
+            : $converter->convert();
+    }
+
+    /**
+     * Returns an object with all address conversions.
+     *
+     * @return object
+     */
+    public function all(): object
+    {
+        return match($this->inputFormat) {
+
+            IPAddressFormat::BINARY => $this->getOutputFromBinaryAddress(),
+
+            IPAddressFormat::DECIMAL => $this->getOutputFromDecimalAddress(),
+
+            IPAddressFormat::HEXADECIMAL => $this->getOutputFromHexadecimalAddress(),
+
+            IPAddressFormat::LONG => $this->getOutputFromLongAddress(),
+
+            default => $this->address,
+        };
+    }
+
+    /**
+     * Returns a BinaryIPv4AddressConverter instance.
+     *
+     * @return IPv4AddressConverterInterface
+     */
+    private function getBinaryConverter(): IPv4AddressConverterInterface
+    {
+        return new BinaryIPv4AddressConverter();
+    }
+
+    /**
+     * Returns a DecimalIPv4AddressConverter instance.
+     *
+     * @return IPv4AddressConverterInterface
+     */
+    private function getDecimalConverter(): IPv4AddressConverterInterface
+    {
+        return new DecimalIPv4AddressConverter();
+    }
+
+    /**
+     * Returns a HexadecimalIPv4AddressConverter instance.
+     *
+     * @return IPv4AddressConverterInterface
+     */
+    private function getHexadecimalConverter(): IPv4AddressConverterInterface
+    {
+        return new HexadecimalIPv4AddressConverter();
+    }
+
+    /**
+     * Returns a LongIPv4AddressConverter instance.
+     *
+     * @return IPv4AddressConverterInterface
+     */
+    private function getLongConverter(): IPv4AddressConverterInterface
+    {
+        return new LongIPv4AddressConverter();
+    }
+
+    /**
+     * Returns an object with all converter instances.
+     *
+     * @return object
+     */
+    private function getAddressConverters(): stdClass
+    {
+        return (object) [
+            'binary' => $this->withDotNotation
+                ? $this->getBinaryConverter()->withDotNotation()
+                : $this->getHexadecimalConverter(),
+            'decimal' => $this->getDecimalConverter(),
+            'hexadecimal' => $this->withDotNotation
+                ? $this->getHexadecimalConverter()->withDotNotation()
+                : $this->getHexadecimalConverter(),
+            'long' => $this->getLongConverter(),
+        ];
+    }
+
+    /**
+     * Returns an object with all address conversions from binary address.
+     *
+     * @return stdClass
+     */
+    private function getOutputFromBinaryAddress(): stdClass
+    {
+        $address = $this->address;
+        $converters = $this->getAddressConverters();
+
+        return (object) [
+            'binary' => $address,
+            'decimal' => $converters->decimal->fromBinary($address)->convert(),
+            'hexadecimal' => $converters->hexadecimal->fromBinary($address)->convert(),
+            'long' => $converters->long->fromBinary($address)->convert(),
+        ];
+    }
+
+    /**
+     * Returns an object with all address conversions from decimal address.
+     *
+     * @return stdClass
+     */
+    private function getOutputFromDecimalAddress(): stdClass
+    {
+        $address = $this->address;
+        $converters = $this->getAddressConverters();
+
+        return (object) [
+            'binary' => $converters->binary->fromDecimal($address)->convert(),
+            'decimal' => $address,
+            'hexadecimal' => $converters->hexadecimal->fromDecimal($address)->convert(),
+            'long' => $converters->long->fromDecimal($address)->convert(),
+        ];
+    }
+
+    /**
+     * Returns an object with all address conversions from hexadecimal address.
+     *
+     * @return object
+     */
+    private function getOutputFromHexadecimalAddress()
+    {
+        $address = $this->address;
+        $converters = $this->getAddressConverters();
+
+        return (object) [
+            'binary' => $converters->binary->fromHexadecimal($address)->convert(),
+            'decimal' => $converters->decimal->fromHexadecimal($address)->convert(),
+            'hexadecimal' => $address,
+            'long' => $converters->long->fromHexadecimal($address)->convert(),
+        ];
+    }
+
+    /**
+     * Returns an object with all address conversions from long address.
+     *
+     * @return object
+     */
+    private function getOutputFromLongAddress()
+    {
+        $address = $this->address;
+        $converters = $this->getAddressConverters();
+
+        return (object) [
+            'binary' => $converters->binary->fromLong($address)->convert(),
+            'decimal' => $converters->decimal->fromLong($address)->convert(),
+            'hexadecimal' => $converters->hexadecimal->fromLong($address)->convert(),
+            'long' => $address,
+        ];
     }
 }
