@@ -163,8 +163,7 @@ class IPv4AddressConverter
             throw new OutputFormatException();
         }
 
-        return match($this->inputFormat) {
-
+        return match ($this->inputFormat) {
             IPAddressFormat::BINARY => $this->getFromBinary(),
 
             IPAddressFormat::DECIMAL => $this->getFromDecimal(),
@@ -232,8 +231,7 @@ class IPv4AddressConverter
      */
     public function all(): object
     {
-        return match($this->inputFormat) {
-
+        return match ($this->inputFormat) {
             IPAddressFormat::BINARY => $this->getOutputFromBinaryAddress(),
 
             IPAddressFormat::DECIMAL => $this->getOutputFromDecimalAddress(),
