@@ -244,6 +244,38 @@ The output of the conversion is a hexadecimal string IP address with dot notatio
 string(11) "C0.A8.0A.FE"
 ```
 
+### Output All
+
+There's an all method, that converts an input address to all formats.  
+The input address for the conversion can be a binary, decimal, hexadecimal or long address.
+
+```php
+use Acamposm\IPv4AddressConverter\IPv4AddressConverter;
+
+$converter = IPv4AddressConverter::convert()
+  ->fromDecimal('192.168.10.254')
+  ->withDotNotation()
+  ->all();
+
+var_dump($converter);
+```
+
+The output is an object with the address converted to all formats.
+
+```
+object(stdClass)#638 (4) {
+  ["binary"] => 
+  string(35) "11000000.10101000.00001010.11111110"
+  ["decimal"] => 
+  string(14) "192.168.10.254"
+  ["hexadecimal"] => 
+  string(11) "C0.A8.0A.FE"
+  ["long"] => 
+  int(3232238334)
+}
+```
+
+
 ## Testing
 
 To run the tests you only need to run this command:
