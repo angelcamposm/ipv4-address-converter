@@ -14,13 +14,13 @@ class DecimalIPv4AddressConverter extends BaseAddressConverter
      *
      * @return int|string
      */
-    public function convert(): int|string
+    public function convert(): int | string
     {
         return match ($this->inputFormat) {
-            IPAddressFormat::BINARY => $this->fromBinaryToDecimal($this->address),
+            IPAddressFormat::BINARY      => $this->fromBinaryToDecimal($this->address),
             IPAddressFormat::HEXADECIMAL => $this->fromHexadecimalToDecimal($this->address),
-            IPAddressFormat::LONG => $this->fromLongToDecimal($this->address),
-            default => $this->address,
+            IPAddressFormat::LONG        => $this->fromLongToDecimal($this->address),
+            default                      => $this->address,
         };
     }
 }

@@ -27,7 +27,7 @@ class BaseTestCase extends TestCase
     protected function getPackageAliases($app)
     {
         return [
-            'IPv4AddressConverter' => 'Acamposm\IPv4AddressConverter\Facades\IPv4AddressConverterFacade'
+            'IPv4AddressConverter' => 'Acamposm\IPv4AddressConverter\Facades\IPv4AddressConverterFacade',
         ];
     }
 

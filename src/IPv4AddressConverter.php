@@ -2,12 +2,10 @@
 
 namespace Acamposm\IPv4AddressConverter;
 
-use Acamposm\IPv4AddressConverter\Converters\{
-    BinaryIPv4AddressConverter,
-    DecimalIPv4AddressConverter,
-    HexadecimalIPv4AddressConverter,
-    LongIPv4AddressConverter,
-};
+use Acamposm\IPv4AddressConverter\Converters\BinaryIPv4AddressConverter;
+use Acamposm\IPv4AddressConverter\Converters\DecimalIPv4AddressConverter;
+use Acamposm\IPv4AddressConverter\Converters\HexadecimalIPv4AddressConverter;
+use Acamposm\IPv4AddressConverter\Converters\LongIPv4AddressConverter;
 use Acamposm\IPv4AddressConverter\Enums\IPAddressFormatEnum as IPAddressFormat;
 use Acamposm\IPv4AddressConverter\Exceptions\OutputFormatException;
 use Acamposm\IPv4AddressConverter\Interfaces\IPv4AddressConverterInterface;
@@ -15,7 +13,7 @@ use stdClass;
 
 class IPv4AddressConverter
 {
-    private int|string $address;
+    private int | string $address;
     private IPv4AddressConverterInterface $converter;
     private int $inputFormat;
     private bool $withDotNotation;
@@ -159,10 +157,11 @@ class IPv4AddressConverter
     /**
      * Returns the converted IP Address from the original value to specified format.
      *
-     * @return int|string
      * @throws OutputFormatException
+     *
+     * @return int|string
      */
-    public function get(): int|string
+    public function get(): int | string
     {
         if (!isset($this->converter)) {
             throw new OutputFormatException();
@@ -184,7 +183,7 @@ class IPv4AddressConverter
     /**
      * @return int|string
      */
-    private function getFromBinary(): int|string
+    private function getFromBinary(): int | string
     {
         $converter = $this->converter->fromBinary($this->address);
 
@@ -196,7 +195,7 @@ class IPv4AddressConverter
     /**
      * @return int|string
      */
-    private function getFromDecimal(): int|string
+    private function getFromDecimal(): int | string
     {
         $converter = $this->converter->fromDecimal($this->address);
 
@@ -208,7 +207,7 @@ class IPv4AddressConverter
     /**
      * @return int|string
      */
-    private function getFromHexadecimal(): int|string
+    private function getFromHexadecimal(): int | string
     {
         $converter = $this->converter->fromHexadecimal($this->address);
 
@@ -220,7 +219,7 @@ class IPv4AddressConverter
     /**
      * @return int|string
      */
-    private function getFromLong(): int|string
+    private function getFromLong(): int | string
     {
         $converter = $this->converter->fromLong($this->address);
 
@@ -300,7 +299,7 @@ class IPv4AddressConverter
             'binary' => $this->withDotNotation
                 ? $this->getBinaryConverter()->withDotNotation()
                 : $this->getHexadecimalConverter(),
-            'decimal' => $this->getDecimalConverter(),
+            'decimal'     => $this->getDecimalConverter(),
             'hexadecimal' => $this->withDotNotation
                 ? $this->getHexadecimalConverter()->withDotNotation()
                 : $this->getHexadecimalConverter(),
@@ -319,10 +318,10 @@ class IPv4AddressConverter
         $converters = $this->getAddressConverters();
 
         return (object) [
-            'binary' => $address,
-            'decimal' => $converters->decimal->fromBinary($address)->convert(),
+            'binary'      => $address,
+            'decimal'     => $converters->decimal->fromBinary($address)->convert(),
             'hexadecimal' => $converters->hexadecimal->fromBinary($address)->convert(),
-            'long' => $converters->long->fromBinary($address)->convert(),
+            'long'        => $converters->long->fromBinary($address)->convert(),
         ];
     }
 
@@ -337,10 +336,10 @@ class IPv4AddressConverter
         $converters = $this->getAddressConverters();
 
         return (object) [
-            'binary' => $converters->binary->fromDecimal($address)->convert(),
-            'decimal' => $address,
+            'binary'      => $converters->binary->fromDecimal($address)->convert(),
+            'decimal'     => $address,
             'hexadecimal' => $converters->hexadecimal->fromDecimal($address)->convert(),
-            'long' => $converters->long->fromDecimal($address)->convert(),
+            'long'        => $converters->long->fromDecimal($address)->convert(),
         ];
     }
 
@@ -355,10 +354,10 @@ class IPv4AddressConverter
         $converters = $this->getAddressConverters();
 
         return (object) [
-            'binary' => $converters->binary->fromHexadecimal($address)->convert(),
-            'decimal' => $converters->decimal->fromHexadecimal($address)->convert(),
+            'binary'      => $converters->binary->fromHexadecimal($address)->convert(),
+            'decimal'     => $converters->decimal->fromHexadecimal($address)->convert(),
             'hexadecimal' => $address,
-            'long' => $converters->long->fromHexadecimal($address)->convert(),
+            'long'        => $converters->long->fromHexadecimal($address)->convert(),
         ];
     }
 
@@ -373,10 +372,10 @@ class IPv4AddressConverter
         $converters = $this->getAddressConverters();
 
         return (object) [
-            'binary' => $converters->binary->fromLong($address)->convert(),
-            'decimal' => $converters->decimal->fromLong($address)->convert(),
+            'binary'      => $converters->binary->fromLong($address)->convert(),
+            'decimal'     => $converters->decimal->fromLong($address)->convert(),
             'hexadecimal' => $converters->hexadecimal->fromLong($address)->convert(),
-            'long' => $address,
+            'long'        => $address,
         ];
     }
 }
