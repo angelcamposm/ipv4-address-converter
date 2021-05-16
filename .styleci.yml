@@ -18,4 +18,3 @@ enabled:
   - const_visibility_required
   - no_break_comment
   - psr12_braces
-  - single_trait_insert_per_statement
