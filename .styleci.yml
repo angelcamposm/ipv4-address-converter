@@ -1,8 +1,21 @@
 version: 8
-preset: psr12
+
+preset: default
+
+tab-width: 4
+use-tabs: false
+
+finder:
+  exclude:
+    - "modules"
+    - "node_modules"
+    - "storage"
+    - "vendor"
+  name: "*.php"
+  not-name: "*.blade.php"
 
 enabled:
-
-
-disabled:
-  - single_class_element_per_statement
+  - const_visibility_required
+  - no_break_comment
+  - psr12_braces
+  - single_trait_insert_per_statement
