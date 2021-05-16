@@ -14,7 +14,7 @@ class BinaryIPv4AddressConverter extends BaseAddressConverter
      *
      * @return int|string
      */
-    public function convert(): int|string
+    public function convert(): int | string
     {
         return match ($this->inputFormat) {
             IPAddressFormat::DECIMAL => $this->withDotNotation

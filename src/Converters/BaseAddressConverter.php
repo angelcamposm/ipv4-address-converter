@@ -7,7 +7,7 @@ use Acamposm\IPv4AddressConverter\Interfaces\IPv4AddressConverterInterface;
 
 abstract class BaseAddressConverter implements IPv4AddressConverterInterface
 {
-    protected int|string $address;
+    protected int | string $address;
     protected int $inputFormat;
 
     /**
@@ -95,7 +95,7 @@ abstract class BaseAddressConverter implements IPv4AddressConverterInterface
     /**
      * @inheritDoc
      */
-    public function convert(): int|string
+    public function convert(): int | string
     {
     }
 }

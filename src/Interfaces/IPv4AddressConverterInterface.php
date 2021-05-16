@@ -9,5 +9,5 @@ interface IPv4AddressConverterInterface
      *
      * @return int|string
      */
-    public function convert(): int|string;
+    public function convert(): int | string;
 }

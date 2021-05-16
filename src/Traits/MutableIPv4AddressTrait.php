@@ -8,7 +8,8 @@ trait MutableIPv4AddressTrait
      * Apply dot notation to IP Address.
      *
      * @param string $address
-     * @param int $length
+     * @param int    $length
+     *
      * @return string
      */
     private function applyDotNotationToAddress(string $address, int $length): string
@@ -36,6 +37,7 @@ trait MutableIPv4AddressTrait
      * Converts a binary IP Address to dotted decimal IP Address.
      *
      * @param string $address
+     *
      * @return string
      */
     private function fromBinaryToDecimal(string $address): string
@@ -54,6 +56,7 @@ trait MutableIPv4AddressTrait
      * Converts a binary IP Address to a hexadecimal IP Address.
      *
      * @param string $address
+     *
      * @return string
      */
     private function fromBinaryToHex(string $address): string
@@ -72,6 +75,7 @@ trait MutableIPv4AddressTrait
      * Converts a binary IP Address to dotted hexadecimal IP Address.
      *
      * @param string $address
+     *
      * @return string
      */
     private function fromBinaryToDottedHex(string $address): string
@@ -83,6 +87,7 @@ trait MutableIPv4AddressTrait
      * Converts a binary IP Address to long integer IP Address.
      *
      * @param string $address
+     *
      * @return int
      */
     private function fromBinaryToLong(string $address): int
@@ -94,6 +99,7 @@ trait MutableIPv4AddressTrait
      * Converts a dotted decimal IP Address to binary IP Address.
      *
      * @param string $address
+     *
      * @return string
      */
     private function fromDecimalToBinary(string $address): string
@@ -111,6 +117,7 @@ trait MutableIPv4AddressTrait
      * Converts a dotted decimal IP Address to doted binary IP Address.
      *
      * @param string $address
+     *
      * @return string
      */
     private function fromDecimalToDottedBinary(string $address): string
@@ -122,6 +129,7 @@ trait MutableIPv4AddressTrait
      * Converts a dotted decimal IP Address to dotted hex IP Address.
      *
      * @param string $address
+     *
      * @return string
      */
     private function fromDecimalToDottedHex(string $address): string
@@ -133,6 +141,7 @@ trait MutableIPv4AddressTrait
      * Converts a dotted decimal IP Address to a hex IP Address.
      *
      * @param string $address
+     *
      * @return string
      */
     private function fromDecimalToHex(string $address): string
@@ -150,6 +159,7 @@ trait MutableIPv4AddressTrait
      * Converts a doted decimal IP Address to long integer IP Address.
      *
      * @param string $address
+     *
      * @return int
      */
     private function fromDecimalToLong(string $address): int
@@ -157,11 +167,11 @@ trait MutableIPv4AddressTrait
         return ip2long($address);
     }
 
-
     /**
      * Converts a hexadecimal IP address to binary IP Address.
      *
      * @param string $address
+     *
      * @return string
      */
     private function fromHexadecimalToBinary(string $address): string
@@ -179,6 +189,7 @@ trait MutableIPv4AddressTrait
      * Converts a hexadecimal IP address to binary IP Address with dot notation.
      *
      * @param string $address
+     *
      * @return string
      */
     private function fromHexadecimalToDottedBinary(string $address): string
@@ -190,6 +201,7 @@ trait MutableIPv4AddressTrait
      * Converts a hexadecimal IP address to decimal IP Address.
      *
      * @param string $address
+     *
      * @return string
      */
     private function fromHexadecimalToDecimal(string $address): string
@@ -207,6 +219,7 @@ trait MutableIPv4AddressTrait
      * Converts a hexadecimal IP address to Long integer IP Address.
      *
      * @param string $address
+     *
      * @return int
      */
     private function fromHexadecimalToLong(string $address): int
@@ -218,6 +231,7 @@ trait MutableIPv4AddressTrait
      * Converts a long integer IP Address to decimal IP Address.
      *
      * @param int $address
+     *
      * @return string
      */
     private function fromLongToDecimal(int $address): string
@@ -229,6 +243,7 @@ trait MutableIPv4AddressTrait
      * Converts a long integer IP Address to a dotted hex IP Address.
      *
      * @param int $address
+     *
      * @return string
      */
     private function fromLongToDottedHex(int $address): string
@@ -240,6 +255,7 @@ trait MutableIPv4AddressTrait
      * Converts a long integer IP Address to a hex IP Address.
      *
      * @param int $address
+     *
      * @return string
      */
     private function fromLongToHex(int $address): string
@@ -251,6 +267,7 @@ trait MutableIPv4AddressTrait
      * Converts a long integer IP Address to binary IP Address.
      *
      * @param int $address
+     *
      * @return string
      */
     private function fromLongToBinary(int $address): string
@@ -260,7 +277,9 @@ trait MutableIPv4AddressTrait
 
     /**
      * Converts a long integer IP Address to dotted binary IP Address.
+     *
      * @param string $address
+     *
      * @return string
      */
     private function fromLongToDottedBinary(string $address): string

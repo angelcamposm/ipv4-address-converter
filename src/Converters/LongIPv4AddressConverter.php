@@ -14,13 +14,13 @@ class LongIPv4AddressConverter extends BaseAddressConverter
      *
      * @return int|string
      */
-    public function convert(): int|string
+    public function convert(): int | string
     {
         return match ($this->inputFormat) {
-            IPAddressFormat::BINARY => $this->fromBinaryToLong($this->address),
-            IPAddressFormat::DECIMAL => $this->fromDecimalToLong($this->address),
+            IPAddressFormat::BINARY      => $this->fromBinaryToLong($this->address),
+            IPAddressFormat::DECIMAL     => $this->fromDecimalToLong($this->address),
             IPAddressFormat::HEXADECIMAL => $this->fromHexadecimalToLong($this->address),
-            default => $this->address,
+            default                      => $this->address,
         };
     }
 }
