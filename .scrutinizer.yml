@@ -1,0 +1,9 @@
+build:
+  nodes:
+    coverage:
+      tests:
+        override:
+          - command: composer test
+            coverage:
+              file: build/coverage.xml
+              format: clover
