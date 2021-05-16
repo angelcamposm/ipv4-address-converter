@@ -18,3 +18,5 @@ enabled:
   - const_visibility_required
   - no_break_comment
   - psr12_braces
+disabled:
+  - symfony_braces
