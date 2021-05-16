@@ -49,7 +49,7 @@
         }
     },
     "scripts": {
-        "test": "phpunit --colors=always --testdox tests",
+        "test": "phpunit --colors=always --testdox tests --coverage-clover build/coverage.xml",
         "test-coverage": "phpunit --coverage-html coverage --testdox tests"
     },
     "config": {
